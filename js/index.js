@@ -16,7 +16,8 @@ playerEl.textContent = player.name + ": $" + player.chips
 function getRandomCard() {
     let randomNumber = Math.floor(Math.random() * 13) + 1
     if (randomNumber === 1) {
-        return 11
+        return sum + 11 > 21 ?  1 : 11;
+        // return 11
     }
     else if (randomNumber > 10) {
         return 10
@@ -56,9 +57,12 @@ function rednerGame() {
 
 function newCard() {
     if (isAlive && !hasBlackJack) {
+        console.log("Drawing a card")
         let card = getRandomCard()
         sum += card
         cards.push(card)
         rednerGame()
+    } else {
+        console.log("You can't get a new card")
     }
 }
